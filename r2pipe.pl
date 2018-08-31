@@ -4,9 +4,8 @@
 :- use_module(library(http/json)).
 
 read_result(Out, Json) :-
-	%read_string(Out, "", "", End, Json),
-	%print(Json).
-	json_read_dict(Out, Json).
+	read_string(Out, "", "", _, String),
+	atom_json_dict(String, Json, []).
 
 send_command(R, Command, Json) :-
 	write(R.in, Command),
